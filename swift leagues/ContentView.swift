@@ -65,7 +65,7 @@ class CoinViewModel: ObservableObject {
     @Published var searchText = ""
     
     private var cancellables = Set<AnyCancellable>()
-    private var walletManager: WalletManager?
+    private var walletManager: ReownWalletManager?
 
     // Computed property to filter coins based on search text
     var filteredCoins: [Coin] {
@@ -79,7 +79,7 @@ class CoinViewModel: ObservableObject {
         }
     }
     
-    init(walletManager: WalletManager) {
+    init(walletManager: ReownWalletManager) {
         self.walletManager = walletManager
         fetchCoins()
     }
@@ -130,37 +130,29 @@ class CoinViewModel: ObservableObject {
     }
     
     func submitTeam() {
-        guard let walletAddress = walletManager?.walletAddress else {
+        guard walletManager?.walletAddress != nil else {
             print("Wallet not connected")
             return
         }
-        
-        Task {
-            do {
-                try await SupabaseManager.shared.saveTeam(team: currentTeam, walletAddress: walletAddress)
-                print("Team submitted!")
-                currentTeam.removeAll()
-            } catch {
-                print("Error saving team: \(error)")
-            }
-        }
+        // Supabase removed; placeholder action
+        print("Team submitted (local-only). Implement persistence if needed.")
+        currentTeam.removeAll()
     }
 }
 
 
 // MARK: - Main View
 struct ContentView: View {
-    @StateObject private var walletManager = WalletManager()
+    @StateObject private var walletManager = ReownWalletManager()
     @StateObject private var viewModel: CoinViewModel
     @StateObject private var themeManager = ThemeManager()
     @State private var selectedTab = "Home"
     @State private var isSearching = false
     @State private var showTeamPopup = false
-    @State private var showWalletSheet = false
     let tabs = ["Home", "My team", "Contest", "Ranking", "Latest"]
 
     init() {
-        let walletManager = WalletManager()
+        let walletManager = ReownWalletManager()
         _viewModel = StateObject(wrappedValue: CoinViewModel(walletManager: walletManager))
         _walletManager = StateObject(wrappedValue: walletManager)
     }
@@ -172,7 +164,7 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
-                    HeaderView(searchText: $viewModel.searchText, isSearching: $isSearching, showWalletSheet: $showWalletSheet)
+                    HeaderView(searchText: $viewModel.searchText, isSearching: $isSearching)
                     
                     if !isSearching {
                         TabNavigationView(selectedTab: $selectedTab, tabs: tabs)
@@ -200,10 +192,7 @@ struct ContentView: View {
             TeamPopupView(viewModel: viewModel, show: $showTeamPopup)
                 .presentationBackground(.regularMaterial)
         }
-        .sheet(isPresented: $showWalletSheet) {
-            WalletSelectionView(show: $showWalletSheet)
-                .presentationBackground(.regularMaterial)
-        }
+        // Wallet selection sheet removed; Reown connect uses its own flow
     }
 }
 
@@ -211,10 +200,10 @@ struct ContentView: View {
 
 struct HeaderView: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @EnvironmentObject var walletManager: WalletManager
+    @EnvironmentObject var walletManager: ReownWalletManager
     @Binding var searchText: String
     @Binding var isSearching: Bool
-    @Binding var showWalletSheet: Bool
+    // Wallet sheet removed
 
     var body: some View {
         HStack {
@@ -251,7 +240,23 @@ struct HeaderView: View {
                         }
                         .buttonStyle(.glass)
                         
-                        WalletConnectionView(showWalletSheet: $showWalletSheet)
+                        Button(action: {
+                            if walletManager.isConnected {
+                                walletManager.disconnect()
+                            } else {
+                                walletManager.connect()
+                            }
+                        }) {
+                            if walletManager.isConnected {
+                                Text(walletManager.shortenedAddress)
+                                    .font(.system(size: 14, weight: .bold))
+                                    .padding(.horizontal, 5)
+                            } else {
+                                Image(systemName: "wallet.bifold")
+                                    .font(.system(size: 20, weight: .bold))
+                            }
+                        }
+                        .buttonStyle(.glass)
                         
                         Button(action: { themeManager.toggleTheme() }) {
                             Image(systemName: themeManager.colorScheme == .dark ? "sun.max.fill" : "moon.fill")
