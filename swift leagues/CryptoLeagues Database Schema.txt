@@ -1,0 +1,401 @@
+-- CryptoLeagues Database Schema
+-- Run this in your Supabase SQL Editor
+
+-- =============================================================================
+-- 1. TEAMS TABLE
+-- Stores team information with wallet address, captain selections
+-- =============================================================================
+
+CREATE TABLE teams (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  wallet_address TEXT NOT NULL,
+  team_name TEXT,
+  captain_token_symbol TEXT,
+  vice_captain_token_symbol TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- =============================================================================
+-- 2. TEAM_TOKENS TABLE
+-- Stores individual tokens for each team with predictions
+-- =============================================================================
+
+CREATE TABLE team_tokens (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  team_id UUID REFERENCES teams(id) ON DELETE CASCADE,
+  token_symbol TEXT NOT NULL,
+  token_name TEXT NOT NULL,
+  token_price DECIMAL(20, 8) NOT NULL,
+  price_change_percent DECIMAL(10, 4),
+  prediction TEXT CHECK (prediction IN ('LOW', 'HIGH')),
+  position INTEGER NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- =============================================================================
+-- 3. INDEXES FOR PERFORMANCE
+-- =============================================================================
+
+-- Teams table indexes
+CREATE INDEX idx_teams_wallet_address ON teams(wallet_address);
+CREATE INDEX idx_teams_created_at ON teams(created_at);
+CREATE INDEX idx_teams_captain ON teams(captain_token_symbol);
+CREATE INDEX idx_teams_vice_captain ON teams(vice_captain_token_symbol);
+
+-- Team tokens table indexes
+CREATE INDEX idx_team_tokens_team_id ON team_tokens(team_id);
+CREATE INDEX idx_team_tokens_prediction ON team_tokens(prediction);
+CREATE INDEX idx_team_tokens_position ON team_tokens(position);
+CREATE INDEX idx_team_tokens_symbol ON team_tokens(token_symbol);
+
+-- =============================================================================
+-- 4. ROW LEVEL SECURITY (RLS)
+-- Enable security policies for data protection
+-- =============================================================================
+
+-- Enable RLS on both tables
+ALTER TABLE teams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE team_tokens ENABLE ROW LEVEL SECURITY;
+
+-- =============================================================================
+-- 5. RLS POLICIES
+-- Basic policies - adjust based on your security requirements
+-- =============================================================================
+
+-- Allow all operations on teams (adjust for production)
+CREATE POLICY "Allow all operations on teams" 
+ON teams FOR ALL USING (true);
+
+-- Allow all operations on team_tokens (adjust for production)
+CREATE POLICY "Allow all operations on team_tokens" 
+ON team_tokens FOR ALL USING (true);
+
+-- =============================================================================
+-- 6. OPTIONAL: MORE RESTRICTIVE RLS POLICIES
+-- Uncomment and modify these for production use
+-- =============================================================================
+
+/*
+-- Users can only see their own teams
+CREATE POLICY "Users can view own teams" 
+ON teams FOR SELECT USING (auth.uid()::text = wallet_address);
+
+-- Users can only insert their own teams
+CREATE POLICY "Users can insert own teams" 
+ON teams FOR INSERT WITH CHECK (auth.uid()::text = wallet_address);
+
+-- Users can only update their own teams
+CREATE POLICY "Users can update own teams" 
+ON teams FOR UPDATE USING (auth.uid()::text = wallet_address);
+
+-- Users can only delete their own teams
+CREATE POLICY "Users can delete own teams" 
+ON teams FOR DELETE USING (auth.uid()::text = wallet_address);
+
+-- Team tokens inherit permissions from teams
+CREATE POLICY "Users can view team tokens" 
+ON team_tokens FOR SELECT USING (
+  EXISTS (
+    SELECT 1 FROM teams 
+    WHERE teams.id = team_tokens.team_id 
+    AND teams.wallet_address = auth.uid()::text
+  )
+);
+
+CREATE POLICY "Users can insert team tokens" 
+ON team_tokens FOR INSERT WITH CHECK (
+  EXISTS (
+    SELECT 1 FROM teams 
+    WHERE teams.id = team_tokens.team_id 
+    AND teams.wallet_address = auth.uid()::text
+  )
+);
+*/
+
+-- =============================================================================
+-- 7. TRIGGERS FOR AUTOMATIC TIMESTAMPS
+-- =============================================================================
+
+-- Function to update the updated_at timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger to automatically update updated_at on teams table
+CREATE TRIGGER update_teams_updated_at 
+    BEFORE UPDATE ON teams 
+    FOR EACH ROW 
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- =============================================================================
+-- 8. USEFUL VIEWS FOR ANALYTICS
+-- =============================================================================
+
+-- View to get team statistics
+CREATE OR REPLACE VIEW team_stats AS
+SELECT 
+    t.id,
+    t.team_name,
+    t.wallet_address,
+    t.captain_token_symbol,
+    t.vice_captain_token_symbol,
+    t.created_at,
+    COUNT(tt.id) as token_count,
+    SUM(tt.token_price) as total_value,
+    AVG(tt.price_change_percent) as avg_performance,
+    COUNT(CASE WHEN tt.prediction = 'HIGH' THEN 1 END) as high_predictions,
+    COUNT(CASE WHEN tt.prediction = 'LOW' THEN 1 END) as low_predictions
+FROM teams t
+LEFT JOIN team_tokens tt ON t.id = tt.team_id
+GROUP BY t.id, t.team_name, t.wallet_address, t.captain_token_symbol, 
+         t.vice_captain_token_symbol, t.created_at;
+
+-- View to get popular tokens
+CREATE OR REPLACE VIEW popular_tokens AS
+SELECT 
+    token_symbol,
+    token_name,
+    COUNT(*) as selection_count,
+    COUNT(CASE WHEN prediction = 'HIGH' THEN 1 END) as high_predictions,
+    COUNT(CASE WHEN prediction = 'LOW' THEN 1 END) as low_predictions,
+    AVG(token_price) as avg_price_when_selected,
+    COUNT(CASE WHEN team_id IN (
+        SELECT id FROM teams WHERE captain_token_symbol = token_symbol
+    ) THEN 1 END) as captain_selections,
+    COUNT(CASE WHEN team_id IN (
+        SELECT id FROM teams WHERE vice_captain_token_symbol = token_symbol
+    ) THEN 1 END) as vice_captain_selections
+FROM team_tokens
+GROUP BY token_symbol, token_name
+ORDER BY selection_count DESC;
+
+-- =============================================================================
+-- 9. FUNCTIONS FOR BUSINESS LOGIC
+-- =============================================================================
+
+-- Function to get team performance with captain bonuses
+CREATE OR REPLACE FUNCTION calculate_team_score(team_uuid UUID)
+RETURNS DECIMAL AS $$
+DECLARE
+    total_score DECIMAL := 0;
+    token_record RECORD;
+    captain_symbol TEXT;
+    vice_captain_symbol TEXT;
+    multiplier DECIMAL;
+BEGIN
+    -- Get captain and vice captain
+    SELECT captain_token_symbol, vice_captain_token_symbol 
+    INTO captain_symbol, vice_captain_symbol
+    FROM teams WHERE id = team_uuid;
+    
+    -- Calculate score for each token
+    FOR token_record IN 
+        SELECT token_symbol, price_change_percent, prediction
+        FROM team_tokens 
+        WHERE team_id = team_uuid
+    LOOP
+        -- Base score calculation (example logic)
+        -- You can modify this based on your scoring rules
+        multiplier := 1;
+        
+        -- Captain gets 2x multiplier
+        IF token_record.token_symbol = captain_symbol THEN
+            multiplier := 2;
+        -- Vice captain gets 1.5x multiplier
+        ELSIF token_record.token_symbol = vice_captain_symbol THEN
+            multiplier := 1.5;
+        END IF;
+        
+        -- Calculate points based on prediction accuracy
+        -- This is example logic - modify based on your rules
+        IF (token_record.prediction = 'HIGH' AND token_record.price_change_percent > 0) OR
+           (token_record.prediction = 'LOW' AND token_record.price_change_percent < 0) THEN
+            total_score := total_score + (ABS(token_record.price_change_percent) * multiplier);
+        END IF;
+    END LOOP;
+    
+    RETURN total_score;
+END;
+$$ LANGUAGE plpgsql;
+
+-- =============================================================================
+-- 10. SAMPLE DATA QUERIES
+-- =============================================================================
+
+/*
+-- Get all teams for a wallet
+SELECT * FROM teams WHERE wallet_address = 'your_wallet_address';
+
+-- Get team with tokens
+SELECT 
+    t.*,
+    tt.token_symbol,
+    tt.token_name,
+    tt.token_price,
+    tt.prediction,
+    tt.position
+FROM teams t
+JOIN team_tokens tt ON t.id = tt.team_id
+WHERE t.wallet_address = 'your_wallet_address'
+ORDER BY t.created_at DESC, tt.position;
+
+-- Get team statistics
+SELECT * FROM team_stats WHERE wallet_address = 'your_wallet_address';
+
+-- Get most popular tokens
+SELECT * FROM popular_tokens LIMIT 20;
+
+-- Calculate team score
+SELECT team_name, calculate_team_score(id) as score
+FROM teams
+WHERE wallet_address = 'your_wallet_address';
+*/
+
+-- =============================================================================
+-- 11. DATA VALIDATION CONSTRAINTS
+-- =============================================================================
+
+-- Ensure team has exactly 15 tokens (can be added as a constraint or trigger)
+CREATE OR REPLACE FUNCTION validate_team_token_count()
+RETURNS TRIGGER AS $$
+DECLARE
+    token_count INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO token_count
+    FROM team_tokens
+    WHERE team_id = NEW.team_id;
+    
+    IF token_count >= 15 AND TG_OP = 'INSERT' THEN
+        RAISE EXCEPTION 'Team cannot have more than 15 tokens';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger to validate token count
+CREATE TRIGGER validate_team_tokens
+    BEFORE INSERT ON team_tokens
+    FOR EACH ROW
+    EXECUTE FUNCTION validate_team_token_count();
+
+-- =============================================================================
+-- 12. BACKUP AND MAINTENANCE
+-- =============================================================================
+
+-- Create backup function (run manually or schedule)
+/*
+CREATE OR REPLACE FUNCTION backup_teams_data()
+RETURNS TEXT AS $$
+BEGIN
+    -- This would typically export to a file or external storage
+    -- Implement based on your backup strategy
+    RETURN 'Backup completed at ' || NOW();
+END;
+$$ LANGUAGE plpgsql;
+*/
+
+-- =============================================================================
+-- SCHEMA SUMMARY
+-- =============================================================================
+
+/*
+TABLES:
+1. teams - Main team information with wallet address and captain selections
+2. team_tokens - Individual tokens for each team with predictions
+
+KEY FEATURES:
+- UUID primary keys for security
+- Foreign key relationships with cascade delete
+- Prediction system (HIGH/LOW) with constraints
+- Captain and vice captain tracking
+- Automatic timestamps with triggers
+- Performance indexes for fast queries
+- Row Level Security ready
+- Analytics views for insights
+- Business logic functions for scoring
+
+INDEXES:
+- Wallet address lookup
+- Team tokens by team
+- Prediction filtering
+- Captain/vice captain lookup
+- Date-based queries
+
+SECURITY:
+- RLS enabled (configure policies as needed)
+- Input validation constraints
+- Proper foreign key relationships
+- Data type constraints
+
+ANALYTICS:
+- Team statistics view
+- Popular tokens view
+- Scoring calculation function
+- Performance tracking ready
+*/
+
+
+
+-- Add table to track current token prices
+CREATE TABLE current_token_prices (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  token_symbol TEXT UNIQUE NOT NULL,
+  current_price DECIMAL(20, 8) NOT NULL,
+  last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create index for fast lookups
+CREATE INDEX idx_current_prices_symbol ON current_token_prices(token_symbol);
+
+-- Function to update current prices (call this periodically from your API)
+CREATE OR REPLACE FUNCTION update_current_price(symbol TEXT, price DECIMAL)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO current_token_prices (token_symbol, current_price, last_updated)
+    VALUES (symbol, price, NOW())
+    ON CONFLICT (token_symbol) 
+    DO UPDATE SET 
+        current_price = price,
+        last_updated = NOW();
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Add this table to track system updates
+CREATE TABLE system_metadata (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create the current_token_prices table if not exists
+CREATE TABLE IF NOT EXISTS current_token_prices (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  token_symbol TEXT UNIQUE NOT NULL,
+  current_price DECIMAL(20, 8) NOT NULL,
+  last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create index
+CREATE INDEX IF NOT EXISTS idx_current_prices_symbol ON current_token_prices(token_symbol);
+CREATE INDEX IF NOT EXISTS idx_system_metadata_key ON system_metadata(key);
+
+
+-- Add new columns to teams table
+ALTER TABLE teams ADD COLUMN transaction_hash VARCHAR(66);
+ALTER TABLE teams ADD COLUMN blockchain_confirmed BOOLEAN DEFAULT FALSE;
+ALTER TABLE teams ADD COLUMN submission_type VARCHAR(20) DEFAULT 'preview';
+ALTER TABLE teams ADD COLUMN entry_fee_paid BOOLEAN DEFAULT FALSE;
+
+-- Add index for transaction hash lookups
+CREATE INDEX idx_teams_transaction_hash ON teams(transaction_hash);
+CREATE INDEX idx_teams_blockchain_confirmed ON teams(blockchain_confirmed);
+
+-- Add logo_url column to team_tokens table if not exists
+ALTER TABLE team_tokens ADD COLUMN logo_url TEXT;

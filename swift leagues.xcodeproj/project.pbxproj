@@ -1,0 +1,832 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C518D2102E430D7F006DA5D3 /* WalletConnect in Frameworks */ = {isa = PBXBuildFile; productRef = C518D20F2E430D7F006DA5D3 /* WalletConnect */; };
+		C518D2122E430D7F006DA5D3 /* WalletConnectAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C518D2112E430D7F006DA5D3 /* WalletConnectAuth */; };
+		C518D2162E4311E8006DA5D3 /* WalletConnectChat in Frameworks */ = {isa = PBXBuildFile; productRef = C518D2152E4311E8006DA5D3 /* WalletConnectChat */; };
+		C518D2182E4311E8006DA5D3 /* WalletConnectEcho in Frameworks */ = {isa = PBXBuildFile; productRef = C518D2172E4311E8006DA5D3 /* WalletConnectEcho */; };
+		C518D21A2E4311E8006DA5D3 /* WalletConnectNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C518D2192E4311E8006DA5D3 /* WalletConnectNetworking */; };
+		C54E1A362E41D88B006EF04C /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A352E41D88B006EF04C /* Auth */; };
+		C54E1A382E41D88B006EF04C /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A372E41D88B006EF04C /* Functions */; };
+		C54E1A3A2E41D88B006EF04C /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A392E41D88B006EF04C /* PostgREST */; };
+		C54E1A3C2E41D88B006EF04C /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A3B2E41D88B006EF04C /* Realtime */; };
+		C54E1A3E2E41D88B006EF04C /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A3D2E41D88B006EF04C /* Storage */; };
+		C54E1A402E41D88B006EF04C /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = C54E1A3F2E41D88B006EF04C /* Supabase */; };
+		C56014792E42B0FD006552E3 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C56014782E42B0FD006552E3 /* Web3 */; };
+		C560147B2E42B0FD006552E3 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C560147A2E42B0FD006552E3 /* Web3ContractABI */; };
+		C560147D2E42B0FD006552E3 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C560147C2E42B0FD006552E3 /* Web3PromiseKit */; };
+		C5D896F52E427BBC004298FE /* ReownRouter in Frameworks */ = {isa = PBXBuildFile; productRef = C5D896F42E427BBC004298FE /* ReownRouter */; };
+		C5D896F92E427BBC004298FE /* WalletConnect in Frameworks */ = {isa = PBXBuildFile; productRef = C5D896F82E427BBC004298FE /* WalletConnect */; };
+		C5D896FB2E427BBC004298FE /* WalletConnectIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = C5D896FA2E427BBC004298FE /* WalletConnectIdentity */; };
+		C5D896FD2E427BBC004298FE /* WalletConnectNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C5D896FC2E427BBC004298FE /* WalletConnectNetworking */; };
+		C5D896FF2E427BBC004298FE /* WalletConnectNotify in Frameworks */ = {isa = PBXBuildFile; productRef = C5D896FE2E427BBC004298FE /* WalletConnectNotify */; };
+		C5D897012E427BBC004298FE /* WalletConnectPairing in Frameworks */ = {isa = PBXBuildFile; productRef = C5D897002E427BBC004298FE /* WalletConnectPairing */; };
+		C5D897032E427BBC004298FE /* WalletConnectPush in Frameworks */ = {isa = PBXBuildFile; productRef = C5D897022E427BBC004298FE /* WalletConnectPush */; };
+		C5D897052E427BBC004298FE /* WalletConnectVerify in Frameworks */ = {isa = PBXBuildFile; productRef = C5D897042E427BBC004298FE /* WalletConnectVerify */; };
+		C5D897072E427BBC004298FE /* YttriumWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = C5D897062E427BBC004298FE /* YttriumWrapper */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C52F25D12E3B280E0012C64F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C52F25BB2E3B280D0012C64F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C52F25C22E3B280D0012C64F;
+			remoteInfo = "swift leagues";
+		};
+		C52F25DB2E3B280E0012C64F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C52F25BB2E3B280D0012C64F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C52F25C22E3B280D0012C64F;
+			remoteInfo = "swift leagues";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C52F25C32E3B280D0012C64F /* swift leagues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift leagues.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C52F25D02E3B280E0012C64F /* swift leaguesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift leaguesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C52F25DA2E3B280E0012C64F /* swift leaguesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift leaguesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C52F25C52E3B280D0012C64F /* swift leagues */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "swift leagues";
+			sourceTree = "<group>";
+		};
+		C52F25D32E3B280E0012C64F /* swift leaguesTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "swift leaguesTests";
+			sourceTree = "<group>";
+		};
+		C52F25DD2E3B280E0012C64F /* swift leaguesUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "swift leaguesUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C52F25C02E3B280D0012C64F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C56014792E42B0FD006552E3 /* Web3 in Frameworks */,
+				C5D896F52E427BBC004298FE /* ReownRouter in Frameworks */,
+				C518D21A2E4311E8006DA5D3 /* WalletConnectNetworking in Frameworks */,
+				C518D2162E4311E8006DA5D3 /* WalletConnectChat in Frameworks */,
+				C5D896FD2E427BBC004298FE /* WalletConnectNetworking in Frameworks */,
+				C54E1A3A2E41D88B006EF04C /* PostgREST in Frameworks */,
+				C5D896FB2E427BBC004298FE /* WalletConnectIdentity in Frameworks */,
+				C5D897032E427BBC004298FE /* WalletConnectPush in Frameworks */,
+				C5D897012E427BBC004298FE /* WalletConnectPairing in Frameworks */,
+				C518D2182E4311E8006DA5D3 /* WalletConnectEcho in Frameworks */,
+				C5D897052E427BBC004298FE /* WalletConnectVerify in Frameworks */,
+				C54E1A382E41D88B006EF04C /* Functions in Frameworks */,
+				C560147D2E42B0FD006552E3 /* Web3PromiseKit in Frameworks */,
+				C54E1A402E41D88B006EF04C /* Supabase in Frameworks */,
+				C5D896FF2E427BBC004298FE /* WalletConnectNotify in Frameworks */,
+				C560147B2E42B0FD006552E3 /* Web3ContractABI in Frameworks */,
+				C5D896F92E427BBC004298FE /* WalletConnect in Frameworks */,
+				C54E1A362E41D88B006EF04C /* Auth in Frameworks */,
+				C518D2102E430D7F006DA5D3 /* WalletConnect in Frameworks */,
+				C5D897072E427BBC004298FE /* YttriumWrapper in Frameworks */,
+				C54E1A3E2E41D88B006EF04C /* Storage in Frameworks */,
+				C54E1A3C2E41D88B006EF04C /* Realtime in Frameworks */,
+				C518D2122E430D7F006DA5D3 /* WalletConnectAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25CD2E3B280E0012C64F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25D72E3B280E0012C64F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C52F25BA2E3B280D0012C64F = {
+			isa = PBXGroup;
+			children = (
+				C52F25C52E3B280D0012C64F /* swift leagues */,
+				C52F25D32E3B280E0012C64F /* swift leaguesTests */,
+				C52F25DD2E3B280E0012C64F /* swift leaguesUITests */,
+				C52F25C42E3B280D0012C64F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C52F25C42E3B280D0012C64F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C52F25C32E3B280D0012C64F /* swift leagues.app */,
+				C52F25D02E3B280E0012C64F /* swift leaguesTests.xctest */,
+				C52F25DA2E3B280E0012C64F /* swift leaguesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C52F25C22E3B280D0012C64F /* swift leagues */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C52F25E42E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leagues" */;
+			buildPhases = (
+				C52F25BF2E3B280D0012C64F /* Sources */,
+				C52F25C02E3B280D0012C64F /* Frameworks */,
+				C52F25C12E3B280D0012C64F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C52F25C52E3B280D0012C64F /* swift leagues */,
+			);
+			name = "swift leagues";
+			packageProductDependencies = (
+				C54E1A352E41D88B006EF04C /* Auth */,
+				C54E1A372E41D88B006EF04C /* Functions */,
+				C54E1A392E41D88B006EF04C /* PostgREST */,
+				C54E1A3B2E41D88B006EF04C /* Realtime */,
+				C54E1A3D2E41D88B006EF04C /* Storage */,
+				C54E1A3F2E41D88B006EF04C /* Supabase */,
+				C5D896F42E427BBC004298FE /* ReownRouter */,
+				C5D896F82E427BBC004298FE /* WalletConnect */,
+				C5D896FA2E427BBC004298FE /* WalletConnectIdentity */,
+				C5D896FC2E427BBC004298FE /* WalletConnectNetworking */,
+				C5D896FE2E427BBC004298FE /* WalletConnectNotify */,
+				C5D897002E427BBC004298FE /* WalletConnectPairing */,
+				C5D897022E427BBC004298FE /* WalletConnectPush */,
+				C5D897042E427BBC004298FE /* WalletConnectVerify */,
+				C5D897062E427BBC004298FE /* YttriumWrapper */,
+				C56014782E42B0FD006552E3 /* Web3 */,
+				C560147A2E42B0FD006552E3 /* Web3ContractABI */,
+				C560147C2E42B0FD006552E3 /* Web3PromiseKit */,
+				C518D20F2E430D7F006DA5D3 /* WalletConnect */,
+				C518D2112E430D7F006DA5D3 /* WalletConnectAuth */,
+				C518D2152E4311E8006DA5D3 /* WalletConnectChat */,
+				C518D2172E4311E8006DA5D3 /* WalletConnectEcho */,
+				C518D2192E4311E8006DA5D3 /* WalletConnectNetworking */,
+			);
+			productName = "swift leagues";
+			productReference = C52F25C32E3B280D0012C64F /* swift leagues.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C52F25CF2E3B280E0012C64F /* swift leaguesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C52F25E72E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leaguesTests" */;
+			buildPhases = (
+				C52F25CC2E3B280E0012C64F /* Sources */,
+				C52F25CD2E3B280E0012C64F /* Frameworks */,
+				C52F25CE2E3B280E0012C64F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C52F25D22E3B280E0012C64F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C52F25D32E3B280E0012C64F /* swift leaguesTests */,
+			);
+			name = "swift leaguesTests";
+			packageProductDependencies = (
+			);
+			productName = "swift leaguesTests";
+			productReference = C52F25D02E3B280E0012C64F /* swift leaguesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C52F25D92E3B280E0012C64F /* swift leaguesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C52F25EA2E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leaguesUITests" */;
+			buildPhases = (
+				C52F25D62E3B280E0012C64F /* Sources */,
+				C52F25D72E3B280E0012C64F /* Frameworks */,
+				C52F25D82E3B280E0012C64F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C52F25DC2E3B280E0012C64F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C52F25DD2E3B280E0012C64F /* swift leaguesUITests */,
+			);
+			name = "swift leaguesUITests";
+			packageProductDependencies = (
+			);
+			productName = "swift leaguesUITests";
+			productReference = C52F25DA2E3B280E0012C64F /* swift leaguesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C52F25BB2E3B280D0012C64F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					C52F25C22E3B280D0012C64F = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					C52F25CF2E3B280E0012C64F = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = C52F25C22E3B280D0012C64F;
+					};
+					C52F25D92E3B280E0012C64F = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = C52F25C22E3B280D0012C64F;
+					};
+				};
+			};
+			buildConfigurationList = C52F25BE2E3B280D0012C64F /* Build configuration list for PBXProject "swift leagues" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C52F25BA2E3B280D0012C64F;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */,
+				C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				C5C2A1022E429A47008ED5A2 /* XCRemoteSwiftPackageReference "Web3" */,
+				C5C2A1032E429A70008ED5A2 /* XCRemoteSwiftPackageReference "BigInt" */,
+				C5C2A1042E429A86008ED5A2 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				C518D20D2E430C23006DA5D3 /* XCRemoteSwiftPackageReference "wallet-mobile-sdk" */,
+				C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C52F25C42E3B280D0012C64F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C52F25C22E3B280D0012C64F /* swift leagues */,
+				C52F25CF2E3B280E0012C64F /* swift leaguesTests */,
+				C52F25D92E3B280E0012C64F /* swift leaguesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C52F25C12E3B280D0012C64F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25CE2E3B280E0012C64F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25D82E3B280E0012C64F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C52F25BF2E3B280D0012C64F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25CC2E3B280E0012C64F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C52F25D62E3B280E0012C64F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C52F25D22E3B280E0012C64F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C52F25C22E3B280D0012C64F /* swift leagues */;
+			targetProxy = C52F25D12E3B280E0012C64F /* PBXContainerItemProxy */;
+		};
+		C52F25DC2E3B280E0012C64F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C52F25C22E3B280D0012C64F /* swift leagues */;
+			targetProxy = C52F25DB2E3B280E0012C64F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C52F25E22E3B280E0012C64F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C52F25E32E3B280E0012C64F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C52F25E52E3B280E0012C64F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leagues";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C52F25E62E3B280E0012C64F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leagues";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C52F25E82E3B280E0012C64F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leaguesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift leagues.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swift leagues";
+			};
+			name = Debug;
+		};
+		C52F25E92E3B280E0012C64F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leaguesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift leagues.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/swift leagues";
+			};
+			name = Release;
+		};
+		C52F25EB2E3B280E0012C64F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leaguesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "swift leagues";
+			};
+			name = Debug;
+		};
+		C52F25EC2E3B280E0012C64F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gg.swift-leaguesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "swift leagues";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C52F25BE2E3B280D0012C64F /* Build configuration list for PBXProject "swift leagues" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C52F25E22E3B280E0012C64F /* Debug */,
+				C52F25E32E3B280E0012C64F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C52F25E42E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leagues" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C52F25E52E3B280E0012C64F /* Debug */,
+				C52F25E62E3B280E0012C64F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C52F25E72E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leaguesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C52F25E82E3B280E0012C64F /* Debug */,
+				C52F25E92E3B280E0012C64F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C52F25EA2E3B280E0012C64F /* Build configuration list for PBXNativeTarget "swift leaguesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C52F25EB2E3B280E0012C64F /* Debug */,
+				C52F25EC2E3B280E0012C64F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C518D20D2E430C23006DA5D3 /* XCRemoteSwiftPackageReference "wallet-mobile-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MobileWalletProtocol/wallet-mobile-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
+		C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WalletConnect/WalletConnectSwiftV2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.6;
+			};
+		};
+		C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+		C5C2A1022E429A47008ED5A2 /* XCRemoteSwiftPackageReference "Web3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chainnodesorg/Web3.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.8;
+			};
+		};
+		C5C2A1032E429A70008ED5A2 /* XCRemoteSwiftPackageReference "BigInt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/attaswift/BigInt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		C5C2A1042E429A86008ED5A2 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+		C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reown-com/reown-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.10;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C518D20F2E430D7F006DA5D3 /* WalletConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */;
+			productName = WalletConnect;
+		};
+		C518D2112E430D7F006DA5D3 /* WalletConnectAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */;
+			productName = WalletConnectAuth;
+		};
+		C518D2152E4311E8006DA5D3 /* WalletConnectChat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */;
+			productName = WalletConnectChat;
+		};
+		C518D2172E4311E8006DA5D3 /* WalletConnectEcho */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */;
+			productName = WalletConnectEcho;
+		};
+		C518D2192E4311E8006DA5D3 /* WalletConnectNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C518D20E2E430D7F006DA5D3 /* XCRemoteSwiftPackageReference "WalletConnectSwiftV2" */;
+			productName = WalletConnectNetworking;
+		};
+		C54E1A352E41D88B006EF04C /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		C54E1A372E41D88B006EF04C /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		C54E1A392E41D88B006EF04C /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		C54E1A3B2E41D88B006EF04C /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		C54E1A3D2E41D88B006EF04C /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		C54E1A3F2E41D88B006EF04C /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C53926AD2E41D3E1008A44BE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		C56014782E42B0FD006552E3 /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3;
+		};
+		C560147A2E42B0FD006552E3 /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3ContractABI;
+		};
+		C560147C2E42B0FD006552E3 /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3PromiseKit;
+		};
+		C5D896F42E427BBC004298FE /* ReownRouter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = ReownRouter;
+		};
+		C5D896F82E427BBC004298FE /* WalletConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnect;
+		};
+		C5D896FA2E427BBC004298FE /* WalletConnectIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectIdentity;
+		};
+		C5D896FC2E427BBC004298FE /* WalletConnectNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectNetworking;
+		};
+		C5D896FE2E427BBC004298FE /* WalletConnectNotify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectNotify;
+		};
+		C5D897002E427BBC004298FE /* WalletConnectPairing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectPairing;
+		};
+		C5D897022E427BBC004298FE /* WalletConnectPush */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectPush;
+		};
+		C5D897042E427BBC004298FE /* WalletConnectVerify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectVerify;
+		};
+		C5D897062E427BBC004298FE /* YttriumWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5EA941D2E3C7CA700388542 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = YttriumWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C52F25BB2E3B280D0012C64F /* Project object */;
+}
