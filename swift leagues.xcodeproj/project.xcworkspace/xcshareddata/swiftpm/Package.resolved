@@ -1,5 +1,5 @@
 {
-  "originHash" : "3e115d387e267d008361b2510c725a1502520299a0b7f21bf19c1a39592324e3",
+  "originHash" : "ec866ae80f77c1fbbf3c1eec62b2c840cdc148756f328848d360a3c7dcbfef89",
   "pins" : [
     {
       "identity" : "bigint",
@@ -26,24 +26,6 @@
       "state" : {
         "revision" : "8a98e31a47854d3180882c8068cc4d9381bf382d",
         "version" : "6.22.1"
-      }
-    },
-    {
-      "identity" : "qrcode",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/WalletConnect/QRCode",
-      "state" : {
-        "revision" : "263f280d2c8144adfb0b6676109846cfc8dd552b",
-        "version" : "14.3.1"
-      }
-    },
-    {
-      "identity" : "reown-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/reown-com/reown-swift",
-      "state" : {
-        "revision" : "33d7f1c37e3e28a7909040a0f8028e20418300db",
-        "version" : "1.6.12"
       }
     },
     {
@@ -200,15 +182,6 @@
       }
     },
     {
-      "identity" : "swift-qrcode-generator",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dagronf/swift-qrcode-generator",
-      "state" : {
-        "revision" : "5ca09b6a2ad190f94aa3d6ddef45b187f8c0343b",
-        "version" : "1.0.3"
-      }
-    },
-    {
       "identity" : "swift-service-lifecycle",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/swift-service-lifecycle.git",
@@ -227,24 +200,6 @@
       }
     },
     {
-      "identity" : "swiftimagereadwrite",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dagronf/SwiftImageReadWrite",
-      "state" : {
-        "revision" : "5596407d1cf61b953b8e658fa8636a471df3c509",
-        "version" : "1.1.6"
-      }
-    },
-    {
-      "identity" : "wallet-mobile-sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MobileWalletProtocol/wallet-mobile-sdk",
-      "state" : {
-        "revision" : "4293df51d3500b8e876ca4bf0d7548adf097569a",
-        "version" : "1.1.2"
-      }
-    },
-    {
       "identity" : "web3.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/chainnodesorg/Web3.swift",
@@ -260,15 +215,6 @@
       "state" : {
         "revision" : "8666c92dbbb3c8eefc8008c9c8dcf50bfd302167",
         "version" : "2.16.1"
-      }
-    },
-    {
-      "identity" : "yttrium",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/reown-com/yttrium",
-      "state" : {
-        "revision" : "08bd868788cfaaac6499bd15c9e655044832a610",
-        "version" : "0.9.35"
       }
     }
   ],

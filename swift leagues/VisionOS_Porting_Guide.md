@@ -5,12 +5,12 @@ This document provides a comprehensive guide for porting the existing "CryptoLea
 ## 1. iOS App Overview
 
 **Name:** CryptoLeagues
-**Purpose:** A fantasy league application based on cryptocurrencies. Users select a team of 5 cryptocurrencies, and their performance is tracked.
+**Purpose:** A fantasy league application based on cryptocurrencies and stocks. Users select a team of 5 assets (cryptocurrencies or stocks), and their performance is tracked.
 
 ### Core Features:
 
-*   **Cryptocurrency Data:** Fetches real-time cryptocurrency data (price, name, symbol, 24-hour change) from the CoinGecko API.
-*   **Team Selection:** Allows users to select a team of up to 5 cryptocurrencies.
+*   **Asset Data:** Fetches real-time cryptocurrency and stock data (price, name, symbol, 24-hour change) from the CoinGecko and Financial Modeling Prep APIs.
+*   **Team Selection:** Allows users to select a team of up to 5 assets (mix of cryptocurrencies and stocks).
 *   **Team Submission:** Saves the user's selected team to a Supabase backend, linking it to their wallet address.
 *   **Wallet Integration:**
     *   Connects to Ethereum-based wallets.
@@ -22,19 +22,20 @@ This document provides a comprehensive guide for porting the existing "CryptoLea
     *   Utilizes "glass" effects for UI elements.
     *   Features tab-based navigation for "Home," "My team," "Contest," "Ranking," and "Latest."
     *   Includes a news slideshow.
-    *   Provides search functionality for cryptocurrencies.
+    *   Provides search functionality for assets.
 
 ### Dependencies:
 
 *   **Supabase:** For the backend database.
 *   **Web3.swift:** For interacting with the Ethereum blockchain.
 *   **CoinGecko API:** For cryptocurrency market data.
+*   **Financial Modeling Prep API:** For stock market data.
 
 ## 2. iOS Project Structure
 
 *   `swift_leaguesApp.swift`: The main entry point of the application.
-*   `ContentView.swift`: The main view of the application, containing the UI and the `CoinViewModel`.
-*   `CoinViewModel.swift` (within `ContentView.swift`): The view model responsible for fetching coin data and managing the user's team.
+*   `ContentView.swift`: The main view of the application, containing the UI and the `AssetViewModel`.
+*   `AssetViewModel.swift` (within `ContentView.swift`): The view model responsible for fetching asset data and managing the user's team.
 *   `SupabaseManager.swift`: Manages the connection and data submission to the Supabase backend.
 *   `WalletManager.swift`: Handles wallet connection, balance fetching, and other Web3-related logic.
 *   `WalletSelectionView.swift`: A view for selecting a wallet to connect with.
@@ -57,8 +58,8 @@ This guide will walk you through the process of recreating the CryptoLeagues app
 1.  **Copy Logic Files:** Copy the following files from the iOS project to your new visionOS project:
     *   `SupabaseManager.swift`
     *   `WalletManager.swift`
-    *   The `Coin` and `NewsArticle` data models.
-    *   The `CoinViewModel` class.
+    *   The `Coin`, `Stock`, and `NewsArticle` data models.
+    *   The `AssetViewModel` class.
 2.  **Adapt for visionOS:**
     *   Review the copied files for any iOS-specific APIs that need to be adapted for visionOS (e.g., `UIKit` dependencies). Most of the logic in these files should be platform-agnostic.
     *   The `WalletManager` might need adjustments depending on how wallet connections are handled in visionOS. Initially, you can maintain the manual address input method.
@@ -89,10 +90,10 @@ This is the most significant part of the porting process. You will recreate the 
     *   **News Slideshow:**
         *   Instead of a 2D slideshow, consider a 3D carousel of news cards using `TabView` with a 3D rotation effect.
 
-    *   **Coin List:**
-        *   Display the list of coins in a `List` or a `ScrollView`.
-        *   Each coin row can be a separate view with a `glassBackgroundEffect`.
-        *   Use hover effects to provide visual feedback when the user looks at a coin row.
+    *   **Asset List:**
+        *   Display the list of assets in a `List` or a `ScrollView`.
+        *   Each asset row can be a separate view with a `glassBackgroundEffect`.
+        *   Use hover effects to provide visual feedback when the user looks at an asset row.
 
     *   **Team Popup:**
         *   When the user views their team, present it in a modal sheet using the `.sheet` modifier.
@@ -119,8 +120,8 @@ Here are some example code snippets to help you get started with the visionOS UI
 **Glass Background Effect:**
 
 ```swift
-struct CoinRowView: View {
-    let coin: Coin
+struct AssetRowView: View {
+    let asset: Asset
 
     var body: some View {
         HStack {

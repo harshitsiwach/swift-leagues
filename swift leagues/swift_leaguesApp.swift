@@ -7,9 +7,6 @@
 
 import SwiftUI
 import Foundation
-#if canImport(ReownAppKit)
-import ReownAppKit
-#endif
 
 @main
 struct swift_leaguesApp: App {
@@ -17,11 +14,13 @@ struct swift_leaguesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onOpenURL { url in
-                    #if canImport(ReownAppKit)
-                    AppKit.instance.handleDeepLink(url)
-                    #endif
-                }
+                .onAppear(perform: preloadABI)
         }
+    }
+}
+
+private func preloadABI() {
+    if Bundle.main.url(forResource: "ContractABI", withExtension: "json") == nil {
+        print("ContractABI.json not found in bundle. Ensure it's added to target membership.")
     }
 }

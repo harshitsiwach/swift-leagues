@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C5AAFA7C2E49343300D86EFC /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA7B2E49343300D86EFC /* BigInt */; };
+		C5AAFA7F2E4934DB00D86EFC /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA7E2E4934DB00D86EFC /* CryptoSwift */; };
+		C5AAFA812E49357C00D86EFC /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA802E49357C00D86EFC /* Web3 */; };
+		C5AAFA832E49357C00D86EFC /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA822E49357C00D86EFC /* Web3ContractABI */; };
+		C5AAFA852E49357C00D86EFC /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA842E49357C00D86EFC /* Web3PromiseKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C52F25D12E3B280E0012C64F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5AAFA832E49357C00D86EFC /* Web3ContractABI in Frameworks */,
+				C5AAFA7C2E49343300D86EFC /* BigInt in Frameworks */,
+				C5AAFA812E49357C00D86EFC /* Web3 in Frameworks */,
+				C5AAFA852E49357C00D86EFC /* Web3PromiseKit in Frameworks */,
+				C5AAFA7F2E4934DB00D86EFC /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +91,7 @@
 				C52F25C52E3B280D0012C64F /* swift leagues */,
 				C52F25D32E3B280E0012C64F /* swift leaguesTests */,
 				C52F25DD2E3B280E0012C64F /* swift leaguesUITests */,
+				C5A25EC22E48735300D8E918 /* Frameworks */,
 				C52F25C42E3B280D0012C64F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +104,13 @@
 				C52F25DA2E3B280E0012C64F /* swift leaguesUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C5A25EC22E48735300D8E918 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +133,11 @@
 			);
 			name = "swift leagues";
 			packageProductDependencies = (
+				C5AAFA7B2E49343300D86EFC /* BigInt */,
+				C5AAFA7E2E4934DB00D86EFC /* CryptoSwift */,
+				C5AAFA802E49357C00D86EFC /* Web3 */,
+				C5AAFA822E49357C00D86EFC /* Web3ContractABI */,
+				C5AAFA842E49357C00D86EFC /* Web3PromiseKit */,
 			);
 			productName = "swift leagues";
 			productReference = C52F25C32E3B280D0012C64F /* swift leagues.app */;
@@ -197,8 +223,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */,
-				C5E9DE0D2E4715D90076DF30 /* XCRemoteSwiftPackageReference "reown-swift" */,
 				C5E9DE0F2E4716F70076DF30 /* XCRemoteSwiftPackageReference "Web3" */,
+				C5AAFA7D2E4934DB00D86EFC /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C52F25C42E3B280D0012C64F /* Products */;
@@ -396,12 +422,15 @@
 		C52F25E52E3B280E0012C64F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = new_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LSA4WRXY8N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swift-leagues-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,12 +457,15 @@
 		C52F25E62E3B280E0012C64F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = new_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LSA4WRXY8N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swift-leagues-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -579,20 +611,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C5AAFA7D2E4934DB00D86EFC /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 		C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/attaswift/BigInt";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.1.0;
-			};
-		};
-		C5E9DE0D2E4715D90076DF30 /* XCRemoteSwiftPackageReference "reown-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/reown-com/reown-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.12;
 			};
 		};
 		C5E9DE0F2E4716F70076DF30 /* XCRemoteSwiftPackageReference "Web3" */ = {
@@ -604,6 +636,31 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5AAFA7B2E49343300D86EFC /* BigInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */;
+			productName = BigInt;
+		};
+		C5AAFA7E2E4934DB00D86EFC /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5AAFA7D2E4934DB00D86EFC /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+		C5AAFA802E49357C00D86EFC /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3;
+		};
+		C5AAFA822E49357C00D86EFC /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3ContractABI;
+		};
+		C5AAFA842E49357C00D86EFC /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web3PromiseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C52F25BB2E3B280D0012C64F /* Project object */;
 }
