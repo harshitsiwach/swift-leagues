@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5A25EC62E48735300D8E91C /* ReownAppKit in Frameworks */ = {isa = PBXBuildFile; productRef = C5A25EC42E48735300D8E91A /* ReownAppKit */; };
+		C5A25EC72E48735300D8E91D /* WalletConnect in Frameworks */ = {isa = PBXBuildFile; productRef = C5A25EC52E48735300D8E91B /* WalletConnect */; };
 		C5AAFA7C2E49343300D86EFC /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA7B2E49343300D86EFC /* BigInt */; };
 		C5AAFA7F2E4934DB00D86EFC /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA7E2E4934DB00D86EFC /* CryptoSwift */; };
 		C5AAFA812E49357C00D86EFC /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C5AAFA802E49357C00D86EFC /* Web3 */; };
@@ -60,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A25EC62E48735300D8E91C /* ReownAppKit in Frameworks */,
+				C5A25EC72E48735300D8E91D /* WalletConnect in Frameworks */,
 				C5AAFA832E49357C00D86EFC /* Web3ContractABI in Frameworks */,
 				C5AAFA7C2E49343300D86EFC /* BigInt in Frameworks */,
 				C5AAFA812E49357C00D86EFC /* Web3 in Frameworks */,
@@ -138,6 +142,8 @@
 				C5AAFA802E49357C00D86EFC /* Web3 */,
 				C5AAFA822E49357C00D86EFC /* Web3ContractABI */,
 				C5AAFA842E49357C00D86EFC /* Web3PromiseKit */,
+				C5A25EC42E48735300D8E91A /* ReownAppKit */,
+				C5A25EC52E48735300D8E91B /* WalletConnect */,
 			);
 			productName = "swift leagues";
 			productReference = C52F25C32E3B280D0012C64F /* swift leagues.app */;
@@ -225,6 +231,7 @@
 				C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */,
 				C5E9DE0F2E4716F70076DF30 /* XCRemoteSwiftPackageReference "Web3" */,
 				C5AAFA7D2E4934DB00D86EFC /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				C5A25EC32E48735300D8E919 /* XCRemoteSwiftPackageReference "reown-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C52F25C42E3B280D0012C64F /* Products */;
@@ -619,6 +626,14 @@
 				minimumVersion = 1.9.0;
 			};
 		};
+		C5A25EC32E48735300D8E919 /* XCRemoteSwiftPackageReference "reown-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reown-com/reown-swift";
+			requirement = {
+				kind = branch;
+				branch = "main";
+			};
+		};
 		C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/attaswift/BigInt";
@@ -638,6 +653,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C5A25EC42E48735300D8E91A /* ReownAppKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5A25EC32E48735300D8E919 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = ReownAppKit;
+		};
+		C5A25EC52E48735300D8E91B /* WalletConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5A25EC32E48735300D8E919 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnect;
+		};
 		C5AAFA7B2E49343300D86EFC /* BigInt */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C5E9DE0C2E47157A0076DF30 /* XCRemoteSwiftPackageReference "BigInt" */;

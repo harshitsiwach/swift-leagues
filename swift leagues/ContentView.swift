@@ -1,8 +1,8 @@
 import SwiftUI
 import Combine
 import Foundation
-// import ReownAppKit  // Commented out until dependencies are installed
-// import WalletConnect // Commented out until dependencies are installed
+import ReownAppKit
+import WalletConnectSign
 // import Web3         // Commented out until dependencies are installed
 // import BigInt       // Commented out until dependencies are installed
 import Network
@@ -266,6 +266,7 @@ class AssetViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject private var viewModel = AssetViewModel()
     @StateObject private var themeManager = ThemeManager()
+    @StateObject private var walletService = WalletService()
     @State private var selectedTab = "Home"
     @State private var isSearching = false
     @State private var showTeamPopup = false
@@ -309,7 +310,7 @@ struct ContentView: View {
             .background(.regularMaterial)
             
             VStack(spacing: 0) {
-                HeaderView(searchText: $viewModel.searchText, isSearching: $isSearching)
+                HeaderView(searchText: $viewModel.searchText, isSearching: $isSearching, walletService: walletService)
                     .padding(.horizontal)
                     .padding(.top, 15)
                 
@@ -337,6 +338,18 @@ struct ContentView: View {
         .sheet(isPresented: $showTeamPopup) {
             TeamPopupView(viewModel: viewModel, show: $showTeamPopup)
                 .presentationBackground(.black)
+        }
+        .sheet(item: $walletService.walletConnectURI) { uriWrapper in
+            VStack {
+                Text("Scan to Connect")
+                    .font(.title)
+                    .padding()
+                QRCodeView(url: uriWrapper.uri)
+                Button("Dismiss") {
+                    walletService.walletConnectURI = nil
+                }
+                .padding()
+            }
         }
     }
 }
@@ -538,6 +551,7 @@ struct HeaderView: View {
     @EnvironmentObject var themeManager: ThemeManager
     @Binding var searchText: String
     @Binding var isSearching: Bool
+    @ObservedObject var walletService: WalletService
 
     var body: some View {
         HStack {
@@ -561,6 +575,21 @@ struct HeaderView: View {
                 
                 // Updated navbar with liquid glass effect and white/greyish icons
                 HStack(spacing: 12) {
+                    if let address = walletService.walletAddress {
+                        Text(address.prefix(6) + "..." + address.suffix(4))
+                            .font(.system(size: 14, weight: .medium))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(.regularMaterial, in: Capsule())
+                    } else {
+                        Button(action: { walletService.connectWallet() }) {
+                            Text("Connect")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                        }
+                        .buttonStyle(.glassProminent)
+                    }
+
                     Button(action: { withAnimation { isSearching = true } }) {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 20, weight: .bold))
